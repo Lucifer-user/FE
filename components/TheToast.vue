@@ -36,7 +36,6 @@
           </svg>
         </button>
 
-        <!-- Progress Bar (Subtle) -->
         <div 
           class="absolute bottom-0 left-0 h-1 bg-current opacity-20 transition-all duration-[3000ms] ease-linear w-full origin-left scale-x-0 animate-progress"
           :class="textClasses[toast.type]"

@@ -1,12 +1,10 @@
 <template>
   <div class="bg-white dark:bg-[#09090B] text-slate-900 dark:text-on-background min-h-screen relative overflow-x-hidden font-body transition-colors duration-500">
-    <!-- Deep Space Background Orbs -->
     <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
       <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-neon-cyan opacity-[0.05] dark:opacity-[0.1] blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-nebula-1"></div>
       <div class="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-deep-purple opacity-[0.05] dark:opacity-[0.1] blur-[150px] mix-blend-multiply dark:mix-blend-screen animate-nebula-2"></div>
     </div>
 
-    <!-- Shooting Stars -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       <div v-for="n in 5" :key="`star-${n}`" 
         class="shooting-star opacity-0 dark:opacity-0 group-dark:opacity-100"
@@ -19,36 +17,32 @@
       ></div>
     </div>
 
-    <!-- Main Content -->
     <main class="relative z-10 pt-32 pb-24 px-6 md:px-12 max-w-container-max mx-auto">
-      <!-- Header -->
       <header class="mb-24 flex flex-col items-center text-center">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-md mb-8 animate-fade-in">
           <span class="w-2 h-2 rounded-full bg-neon-cyan animate-pulse shadow-[0_0_8px_#00f0ff]"></span>
-          <span class="font-display text-[0.7rem] font-bold text-neon-cyan uppercase tracking-widest">Intelligence Feed</span>
+          <span class="font-display text-[0.7rem] font-bold text-neon-cyan uppercase tracking-widest">{{ $t('public.news.badge') }}</span>
         </div>
         
         <h1 class="font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.1] tracking-tight text-slate-900 dark:text-white mb-8 max-w-4xl animate-fade-in transition-colors">
-          Signals from the <span class="bg-gradient-to-r from-neon-cyan to-deep-purple bg-clip-text text-transparent animate-shimmer">Frontier</span>
+          {{ $t('public.news.title_prefix') }} <span class="bg-gradient-to-r from-neon-cyan to-deep-purple bg-clip-text text-transparent animate-shimmer">{{ $t('public.news.title_highlight') }}</span>
         </h1>
         
         <p class="text-slate-600 dark:text-on-surface-variant text-lg md:text-xl leading-relaxed max-w-2xl animate-fade-in delay-200 transition-colors">
-          Explore bleeding-edge developments in cognitive architecture, synthetic reasoning, and the evolving ecosystem of Orbit AI.
+          {{ $t('public.news.subtitle') }}
         </p>
       </header>
 
-      <!-- Bento Grid -->
-      <div v-if="newsList.length" class="grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div v-if="newsList.length" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <template v-for="(news, index) in newsList" :key="news._id.$oid">
           <NuxtLink 
             :to="`/newdetail/${news._id.$oid}`"
             class="glass-card-wrapper group cursor-pointer transition-all duration-500"
-            :class="index === 0 ? 'md:col-span-8' : 'md:col-span-4'"
+            :class="index === 0 ? 'lg:col-span-8' : 'lg:col-span-4'"
           >
             <div class="glass-card-inner flex flex-col relative h-full overflow-hidden transition-all duration-500 bg-white/20 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 group-hover:bg-white/40 dark:group-hover:bg-white/[0.05] shadow-lg dark:shadow-none group-hover:shadow-[0_0_40px_rgba(0,240,255,0.15)]">
               
-              <!-- Card Image -->
-              <div :class="index === 0 ? 'h-80' : 'h-48'" class="w-full relative overflow-hidden rounded-t-2xl">
+              <div :class="index === 0 ? 'h-64 sm:h-80' : 'h-48'" class="w-full relative overflow-hidden rounded-t-2xl">
                 <img 
                   v-if="news.cover_image"
                   :src="news.cover_image" 
@@ -60,19 +54,18 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-white/20 dark:from-[#09090B]/80 to-transparent transition-colors"></div>
               </div>
 
-              <!-- Card Content -->
-              <div class="p-8 flex flex-col flex-grow">
-                <div class="flex gap-3 mb-6">
+              <div class="p-6 sm:p-8 flex flex-col flex-grow">
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-6">
                   <span v-for="tag in news.tags.slice(0, 2)" :key="tag" 
                     class="bg-deep-purple/10 dark:bg-deep-purple/20 text-deep-purple dark:text-neon-cyan font-display text-[0.6rem] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-deep-purple/20 dark:border-deep-purple/30 transition-colors">
                     {{ tag }}
                   </span>
-                  <span v-if="news.status === 'published'" class="ml-auto text-[0.6rem] font-bold text-neon-cyan uppercase tracking-widest">
-                    Live
+                  <span v-if="news.status === 'published'" class="text-[0.6rem] font-bold text-neon-cyan uppercase tracking-widest sm:ml-auto">
+                    {{ $t('public.news.live') }}
                   </span>
                 </div>
 
-                <h2 :class="index === 0 ? 'text-3xl' : 'text-xl'" class="font-display font-bold text-slate-900 dark:text-white mb-4 group-hover:text-neon-cyan transition-colors leading-tight">
+                <h2 :class="index === 0 ? 'text-2xl sm:text-3xl' : 'text-xl'" class="font-display font-bold text-slate-900 dark:text-white mb-4 group-hover:text-neon-cyan transition-colors leading-tight">
                   {{ news.title }}
                 </h2>
 
@@ -97,26 +90,27 @@
 
       <div v-else class="text-center py-32">
         <div class="inline-block animate-spin w-8 h-8 border-4 border-neon-cyan/20 border-t-neon-cyan rounded-full mb-4"></div>
-        <p class="font-display text-sm tracking-widest text-slate-400 dark:text-white/40 transition-colors">SYNCING DATASTREAMS...</p>
+        <p class="font-display text-sm tracking-widest text-slate-400 dark:text-white/40 transition-colors">{{ $t('public.news.loading') }}</p>
       </div>
 
-      <!-- Load More -->
       <div v-if="newsList.length" class="mt-24 flex justify-center">
         <button class="bg-white dark:bg-transparent border border-slate-200 dark:border-white/10 hover:border-neon-cyan text-slate-500 dark:text-white/60 hover:text-neon-cyan px-10 py-4 rounded-full font-display text-[0.7rem] font-bold uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-3 group shadow-sm dark:shadow-none">
-          Load More Transmissions
+          {{ $t('public.news.load_more') }}
           <span class="material-symbols-outlined text-[18px] group-hover:translate-y-1 transition-transform">expand_more</span>
         </button>
       </div>
     </main>
 
-    <!-- Footer Space -->
     <div class="h-32"></div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { auth } from '../src/auth/firebase';
+import { auth } from '~/utils/auth/firebase.js';
+
+const { locale } = useI18n();
+const localeCode = computed(() => locale.value === 'vi' ? 'vi-VN' : 'en-US');
 
 const accessToken = ref('');
 const loading = ref(true);
@@ -202,7 +196,7 @@ const newsList = [
 
 const formatDate = (date) => {
   if (!date?.$date) return "N/A";
-  return new Date(date.$date).toLocaleDateString("en-US", {
+  return new Date(date.$date).toLocaleDateString(localeCode.value, {
     month: 'short',
     day: 'numeric',
     year: 'numeric'

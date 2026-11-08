@@ -3,6 +3,10 @@
 </template>
 
 <script setup>
-import HomePartner from '~/src/views/partner/HomePartner.vue'
+import HomePartner from '~/components/views/partner/HomePartner.vue'
+
+definePageMeta({
+  layout: false
+})
 </script>
 

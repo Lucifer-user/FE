@@ -1,0 +1,1 @@
+import{W as r,N as t,I as o,K as s,a0 as a}from"./Z8SODqc_.js";const n={key:0,class:"mt-1 text-xs font-semibold text-rose-600 dark:text-rose-400"},l=r({__name:"FieldError",props:{errors:{}},setup(e){return(c,m)=>e.errors?.length?(t(),o("p",n,s(e.errors[0]),1)):a("",!0)}});export{l as _};

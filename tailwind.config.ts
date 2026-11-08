@@ -31,6 +31,10 @@ export default {
         "surface-container-high": "#2a2a2a",
         "primary-container": "#00f0ff",
         "secondary-container": "#7701d0",
+        "surface-dim": "#131313",
+        "surface-container-lowest": "#0e0e0e",
+        "secondary-fixed": "#efdbff",
+        "tertiary-fixed-dim": "#ffaedd",
       },
       fontFamily: {
         'display': ['Space Grotesk', 'sans-serif'],

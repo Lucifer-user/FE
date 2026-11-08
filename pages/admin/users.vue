@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import UserManagement from '~/src/views/admin/users.vue'
+import UserManagement from '~/components/views/admin/users.vue'
 
 definePageMeta({
   

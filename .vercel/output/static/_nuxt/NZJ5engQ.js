@@ -1,0 +1,1 @@
+import{y as s,q as a,$ as n}from"./Z8SODqc_.js";const l=()=>{const o={maxAge:604800,sameSite:"lax",secure:!0,path:"/"},e=s("accessToken",o),t=s("orbit_ai_user",o),u=n(()=>!!e.value);return{token:e,user:t,isAuthenticated:u,logout:()=>{e.value=null,t.value=null,a("/login")}}};export{l as u};

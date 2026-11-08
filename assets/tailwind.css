@@ -4,21 +4,21 @@
 
 @layer base {
   :root {
-    --bg-color: #f8fafc;
+    --bg-color: #f7fafc;
     --text-color: #0f172a;
     --on-background: #0f172a;
     --surface: #ffffff;
-    --on-surface: #1e293b;
+    --on-surface: #0f172a;
     --on-surface-variant: #64748b;
   }
 
   .dark {
-    --bg-color: #131313;
-    --text-color: #e5e2e1;
-    --on-background: #e5e2e1;
-    --surface: #131313;
-    --on-surface: #e5e2e1;
-    --on-surface-variant: #b9cacb;
+    --bg-color: #000000;
+    --text-color: #f8fafc;
+    --on-background: #f8fafc;
+    --surface: #0a0a0a;
+    --on-surface: #f8fafc;
+    --on-surface-variant: #94a3b8;
     color-scheme: dark;
   }
 
@@ -28,5 +28,33 @@
     margin: 0;
     padding: 0;
     transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  #platform,
+  #solutions,
+  #news,
+  #enterprise,
+  #pricing {
+    scroll-margin-top: 4.5rem;
+  }
+
+  @media (min-width: 640px) {
+    #platform,
+    #solutions,
+    #news,
+    #enterprise,
+    #pricing {
+      scroll-margin-top: 5.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }

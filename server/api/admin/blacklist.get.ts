@@ -1,24 +1,10 @@
-import { readFileSync, existsSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { tmpdir } from 'node:os';
-
 export default defineEventHandler(async (event) => {
-    const filePath = resolve(tmpdir(), 'suspended_users.json');
+    // Mocked response for UI template
+    const method = event.method;
     
-    let blacklistMap = {};
-    if (existsSync(filePath)) {
-        try {
-            const content = readFileSync(filePath, 'utf-8');
-            blacklistMap = JSON.parse(content);
-        } catch (e) {
-            console.error('[BLACKLIST GET] Error reading file:', e);
-        }
+    if (method === 'GET') {
+        return { data: [], message: 'Mocked data' };
     }
     
-    return {
-        success: true,
-        blacklist: blacklistMap
-    };
-});
-
-
+    return { success: true, message: 'Action mocked successfully' };
+})

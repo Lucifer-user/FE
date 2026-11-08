@@ -1,0 +1,13 @@
+const fs = require('fs');
+const viPath = 'd:/luận văn/Orbit-AI - Copy/platform-ai-frontend/i18n/locales/vi.json';
+const enPath = 'd:/luận văn/Orbit-AI - Copy/platform-ai-frontend/i18n/locales/en.json';
+const vi = JSON.parse(fs.readFileSync(viPath, 'utf8'));
+const en = JSON.parse(fs.readFileSync(enPath, 'utf8'));
+vi.auth.register.success_title = 'Đăng ký Thành Công!';
+vi.auth.register.success_desc = 'Vui lòng kiểm tra hộp thư email của bạn và làm theo hướng dẫn để xác thực tài khoản.';
+vi.auth.register.success_spam_note = '(Nếu không thấy, vui lòng kiểm tra cả thư mục Spam hoặc Quảng cáo)';
+en.auth.register.success_title = 'Registration Successful!';
+en.auth.register.success_desc = 'Please check your email inbox and follow the instructions to verify your account.';
+en.auth.register.success_spam_note = '(If you do not see it, please check your Spam or Promotions folder)';
+fs.writeFileSync(viPath, JSON.stringify(vi, null, 2));
+fs.writeFileSync(enPath, JSON.stringify(en, null, 2));

@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-screen bg-gray-100">
     <div class="container mx-auto py-8 px-4">
-      <h1 class="text-3xl font-bold mb-4 text-center">AI Travel Assistant</h1>
-      <p class="text-center text-gray-600 mb-8">Hỏi tôi bất cứ điều gì về du lịch</p>
+      <h1 class="text-3xl font-bold mb-4 text-center">{{ $t('public.chat.title') }}</h1>
+      <p class="text-center text-gray-600 mb-8">{{ $t('public.chat.subtitle') }}</p>
       
       <ClientOnly>
         <div class="max-w-2xl mx-auto">
@@ -14,5 +14,5 @@
 </template>
 
 <script setup>
-import AIChatContainer from '../src/components/ai-chat/AIChatContainer.vue'
+import AIChatContainer from '~/components/ai-chat/AIChatContainer.vue'
 </script>
